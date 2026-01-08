@@ -21,5 +21,5 @@ public class PracticeArea {
     private String title;
     private String description;
     private String iconCode;
-    
+
 }
