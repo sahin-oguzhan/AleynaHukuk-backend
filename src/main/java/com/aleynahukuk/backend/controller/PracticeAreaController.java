@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/practices")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PracticeAreaController {
 
     private PracticeAreaRepository practiceAreaRepository;

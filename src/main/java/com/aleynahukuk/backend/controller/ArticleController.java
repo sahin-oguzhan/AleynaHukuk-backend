@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/articles")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ArticleController {
 
 
@@ -20,7 +19,12 @@ public class ArticleController {
 
     @GetMapping
     public List<Article> getAllArticles() {
-        return articleRepository.findAll();
+        return articleRepository.findAllByOrderByIdAsc();
+    }
+
+    @GetMapping("/{id}")
+    public Article getArticleById(@PathVariable Long id){
+        return articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Makale bulunamadı"));
     }
 
     @PostMapping
@@ -28,6 +32,15 @@ public class ArticleController {
         return articleRepository.save(article);
     }
 
+    @PutMapping("/{id}")
+    public Article updateArticle(@PathVariable Long id ,@RequestBody Article articleDetails) {
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Makale bulunamadı id: " + id));
 
+        article.setTitle(articleDetails.getTitle());
+        article.setContent(articleDetails.getContent());
+        article.setImageUrl(articleDetails.getImageUrl());
+
+        return articleRepository.save(article);
+    }
 
 }
