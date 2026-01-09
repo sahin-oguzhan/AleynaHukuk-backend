@@ -43,4 +43,9 @@ public class ArticleController {
         return articleRepository.save(article);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteArticle(@PathVariable Long id) {
+        articleRepository.deleteById(id);
+    }
+
 }
