@@ -19,7 +19,7 @@ public class FaqController {
 
     @GetMapping
     public List<Faq> getAllFaqs() {
-        return faqRepository.findAll();
+        return faqRepository.findAllByOrderByIdAsc();
     }
 
     @PostMapping

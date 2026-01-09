@@ -19,7 +19,7 @@ public class PracticeAreaController {
 
     @GetMapping
     public List<PracticeArea> findAll() {
-        return practiceAreaRepository.findAll();
+        return practiceAreaRepository.findAllByOrderByIdAsc();
     }
 
     @PostMapping
